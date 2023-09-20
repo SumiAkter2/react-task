@@ -4,12 +4,15 @@ import Menu from "./components/Menu.jsx";
 import Problem2 from "./components/Problem-2.jsx";
 import Index from "./components/Index.jsx";
 import { useState } from "react";
+import ModalA from "./components/ModalA.jsx";
+import ModalB from "./components/ModalB.jsx";
+import ModalC from "./components/ModalC.jsx";
 
 function App() {
-   const [tasks, setTasks] = useState([]);
-   const addTask = (task) => {
-     setTasks([...tasks, task]);
-   };
+  const [tasks, setTasks] = useState([]);
+  const addTask = (task) => {
+    setTasks([...tasks, task]);
+  };
   return (
     <>
       <Routes>
@@ -19,7 +22,11 @@ function App() {
             path="problem-1"
             element={<Problem1 onAddTask={addTask} tasks={tasks} />}
           />
-          <Route path="problem-2" element={<Problem2 />} />
+          <Route path="problem-2" element={<Problem2 />}>
+            <Route path="modal-a" element={<ModalA />}></Route>
+            <Route path="modal-b" element={<ModalB />}></Route>
+            <Route path="modal-c" element={<ModalC />} />
+          </Route>
         </Route>
       </Routes>
     </>
