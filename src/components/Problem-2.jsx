@@ -1,14 +1,11 @@
 import React, { useState } from "react";
-// import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import ModalA from "./ModalA";
 import ModalB from "./ModalB";
-// import ModalC from "./ModalC";
+import { Route, Router, Routes, useNavigate } from "react-router-dom";
 
-const Problem2 = () => {
-  const [showModalA, setShowModalA] = useState(false);
-  const [showModalB, setShowModalB] = useState(false);
-  const [onlyEven, setOnlyEven] = useState(false);
-
+const Problem2 = ({ onlyEven }) => {
+  //   const [onlyEven, setOnlyEven] = useState(false);
+  const navigate = useNavigate();
   return (
     <div>
       <div className="container">
@@ -17,14 +14,14 @@ const Problem2 = () => {
 
           <div className="d-flex justify-content-center gap-3">
             <button
-              onClick={() => setShowModalA(true)}
-              className="btn btn-lg btn-outline-primary"
+              onClick={() => navigate("/modal-a")}
+              className="btn btn-lg btn-outline-primary "
               type="button"
             >
               All Contacts
             </button>
             <button
-              onClick={() => setShowModalB(true)}
+              onClick={() => navigate("/modal-b")}
               className="btn btn-lg btn-outline-warning"
               type="button"
             >
@@ -33,22 +30,18 @@ const Problem2 = () => {
           </div>
         </div>
       </div>
-      {showModalA && (
-        <ModalA onlyEven={onlyEven} closeModal={() => setShowModalA(false)} />
-      )}
-      {showModalB && (
-        <ModalB onlyEven={onlyEven} closeModal={() => setShowModalB(false)} />
-      )}
-      <div>
-        <label>
-          <input
-            type="checkbox"
-            checked={onlyEven}
-            onChange={() => setOnlyEven(!onlyEven)}
-          />
-          Only even
-        </label>
-      </div>
+     
+
+      {/* <Routes>
+        <Route
+          path="modal-a"
+          element={<ModalA onlyEven={onlyEven}></ModalA>}
+        ></Route>
+        <Route
+          path="modal-b"
+          element={<ModalB onlyEven={onlyEven}></ModalB>}
+        ></Route>
+      </Routes> */}
     </div>
   );
 };
